@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Typography } from "antd";
+import "./App.css";
+import Panel from "./components/Panel";
+import { useAppSelector } from "./hooks";
+import Home from "./screens/Home";
+import store from "./store";
 
 function App() {
+  const logMessage = useAppSelector((state) => state.home.logMessage);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Panel title="Welcome to Map Services" />
+      <Home />
+      <Typography.Text>{logMessage}</Typography.Text>
     </div>
   );
 }
